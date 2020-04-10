@@ -1,4 +1,4 @@
-package test.Object;
+package test.Object.equals;
 
 import java.util.Objects;
 
@@ -18,9 +18,10 @@ public class UserJack {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-
+        //false || false
         if ((o == null) || (o.getClass() != this.getClass()))
             return false;
+
         UserJack userJack = (UserJack) o;
         return name.equals(userJack.name) &&
                 sex.equals(userJack.sex);
