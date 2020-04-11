@@ -27,10 +27,7 @@ public class UserJack {
                 sex.equals(userJack.sex);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, sex);
-    }
+
 
     public String getName() {
         return name;

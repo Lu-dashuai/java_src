@@ -1,5 +1,7 @@
 package test.Object.equals;
 
+import java.lang.reflect.Method;
+
 /**
  *
  * Description: object equals 和 == 学习
@@ -13,18 +15,11 @@ package test.Object.equals;
  */
 public class Test {
     private static UserJack user1 = new UserJack();
-
-    public static void main(String[] args) {
-        test1();
-        test2();
-        test3();
-        test3();
-    }
-
     /**
      * 需要删除UserJack中的equels方法
      */
-    public static void test1(){
+    @org.junit.Test
+    public  void test1(){
         user1.setName("jack");
         user1.setSex("男");
 
@@ -35,7 +30,8 @@ public class Test {
         System.out.println(user1==user2);//false
         System.out.println(user1.equals(user2));//false
     }
-    public static void test2(){
+    @org.junit.Test
+    public  void test2(){
         user1.setName("jack");
         user1.setSex("男");
 
@@ -50,7 +46,8 @@ public class Test {
     /**
      * 重写equals后
      */
-    public static void test3(){
+    @org.junit.Test
+    public  void test3(){
         user1.setName("jack");
         user1.setSex("男");
 
@@ -61,7 +58,8 @@ public class Test {
         System.out.println(user1==user2);//false
         System.out.println(user1.equals(user2));//true
     }
-    public static void test4(){
+    @org.junit.Test
+    public  void test4(){
         user1.setName("jack");
         user1.setSex("男");
 
@@ -73,5 +71,22 @@ public class Test {
         System.out.println(user1.equals(user2));//true
     }
 
+    /**
+     * getClass方法学习
+     *         1. getClass 是获取当前类运行时对象，是一个native方法
+     *         2. 引出另一个问题，java获取对象的4种方法（new ,class.forNmae, clnoe, 反序列化readObject）
+     */
+    @org.junit.Test
+    public void test5() throws Exception {
+        UserJack userJack = new UserJack();
+
+        Class<?> aClass = Class.forName("test.Object.equals.UserJack");
+        UserJack o = (UserJack)aClass.newInstance();
+
+//        UserJack clone = (UserJack)userJack.clone();
+        //问题：序列化和反序列化研究，深拷贝 和 浅拷贝
+        int i = userJack.hashCode();
+        System.out.println(i);
+    }
 
 }
